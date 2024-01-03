@@ -1,4 +1,7 @@
-### Hi there 👋
+![MasterHead](https://user-images.githubusercontent.com/10498744/210012254-234538ff-d198-48aa-8964-37e6fd45d227.gif)
+<h1 align="center">Hey, I'm Arav :)</h1> 
+<h2 align="center">Passionate Data Science, ML guy in Singapore</h2>
+<img align="right" alt="Coding" width="400" src="https://image.myanimelist.net/ui/_3fYL8i6Q-n-155t3dn_4hksVs3MIJxHadG7A7FI_oTy9pL-UqrC-cycJtDkuZzC"
 
 <!--
 **arav-behl/arav-behl** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
