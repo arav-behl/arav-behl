@@ -4,14 +4,14 @@
 <img align="right" alt="Coding" width="400" src="https://image.myanimelist.net/ui/_3fYL8i6Q-n-155t3dn_4hksVs3MIJxHadG7A7FI_oTy9pL-UqrC-cycJtDkuZzC"
 [![](https://visitcount.itsvg.in/api?id=piyushhhxyz&icon=0&color=6)](https://visitcount.itsvg.in)
 
-# 💫 About Arav :
-- 🔭 I’m currently learning Full-Stack-Web Dev
-- 👯 I’m building projects in ML and Data Science
-- 🧠 Gen-AI and NLP Researcher @ NTU
-- 💬 Getting started with Opensource
-- 👩‍💻 Data Science Intern @ EY
-- 💕 I geek out on Startups and VC- connect with me on Linkedin to see my Finance bro side.(I Love Venture Capital and Asset Management)
-- 📚 Data Science and Economics@ NTU 
+#  About Arav :
+-  I’m currently learning Full-Stack-Web Dev
+-  I’m building projects in ML and Data Science
+-  Gen-AI and NLP Researcher @ NTU
+-  Getting started with Opensource
+-  Data Science Intern @ EY
+-  I geek out on Startups and VC- connect with me on Linkedin to see my Finance bro side.(I Love Venture Capital and Asset Management)
+-  Data Science and Economics@ NTU 
 
 ## Languages I know
 ![Python](http://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=ffffff)
