@@ -11,16 +11,16 @@
 
 <img align="right" alt="Coding" width="380" src="https://image.myanimelist.net/ui/_3fYL8i6Q-n-155t3dn_4hksVs3MIJxHadG7A7FI_oTy9pL-UqrC-cycJtDkuZzC" />
 
-## 👨‍💻 About Me
+## About Me
 
-- 🤖 Gen-AI & NLP Researcher **@ NTU**
-- 📊 Data Science Intern **@ EY**
-- 🎓 Data Science & Economics **@ NTU**
-- 🌱 Building projects in **ML, Data Science & AI agents**
-- 💸 I geek out on **Startups, VC & Asset Management** — connect on LinkedIn for my finance side
-- 🚀 Getting more involved in **Open Source**
+- Gen-AI and NLP Researcher at NTU
+- Data Science Intern at EY
+- Data Science and Economics at NTU
+- Building projects in ML, Data Science and AI agents
+- Deeply interested in Startups, VC and Asset Management — connect on LinkedIn for the finance side
+- Getting more involved in Open Source
 
-## 🛠️ Languages & Tools
+## Languages and Tools
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=ffffff)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
@@ -39,33 +39,29 @@
 
 <br clear="right"/>
 
-## 📈 GitHub Stats
+## GitHub Stats
 
 <p align="center">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=arav-behl&show_icons=true&count_private=true&include_all_commits=true&hide_border=true&show=prs_merged,prs_merged_percentage,reviews&theme=tokyonight" alt="Arav's GitHub stats" />
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=arav-behl&layout=compact&hide_border=true&langs_count=8&theme=tokyonight" alt="Top Languages" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=arav-behl&theme=tokyonight" alt="Profile details" />
+</p>
+
+<p align="center">
+  <img height="195em" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=arav-behl&theme=tokyonight" alt="Repos per language" />
+  <img height="195em" src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=arav-behl&theme=tokyonight" alt="Most commit language" />
 </p>
 
 <p align="center">
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=arav-behl&hide_border=true&theme=tokyonight" alt="GitHub Streak" />
 </p>
 
-## 🗓️ Contribution Activity
+## Activity Overview
+
+<p align="center">
+  <img width="900" src="./assets/activity-overview.png" alt="Activity overview — commits, pull requests, code reviews and issues breakdown" />
+</p>
+
+## Contribution Activity
 
 <p align="center">
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=arav-behl&bg_color=1a1b27&color=70a5fd&line=bf91f3&point=38bdae&area=true&hide_border=true" alt="Contribution Graph" />
 </p>
-
-<br/>
-
----
-
-<h3 align="center">Let's connect 🤝</h3>
-
-<p align="center">
-  <a href="https://twitter.com/AravBehl" target="_blank"><img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="twitter" height="32" width="38" /></a>
-  &nbsp;
-  <a href="https://www.linkedin.com/in/arav-behl-0524a6230/" target="_blank"><img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="linkedin" height="32" width="38" /></a>
-</p>
-
-<p align="center"><i>⭐️ From <a href="https://github.com/arav-behl">arav-behl</a></i></p>
