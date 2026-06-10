@@ -60,6 +60,10 @@
   <img src="https://github-readme-stats.vercel.app/api?username=arav-behl&show_icons=true&theme=tokyonight&hide_border=true&bg_color=1a1b27&rank_icon=github" alt="Activity overview — live commits, pull requests, issues and stars" />
 </p>
 
+<p align="center">
+  <img src="assets/activity-radar.svg" alt="Activity radar — contribution split across commits, pull requests, code review and issues" />
+</p>
+
 ## Contribution Activity
 
 <p align="center">
