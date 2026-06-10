@@ -57,7 +57,7 @@
 ## Activity Overview
 
 <p align="center">
-  <img width="900" src="./assets/activity-overview.png" alt="Activity overview — commits, pull requests, code reviews and issues breakdown" />
+  <img src="https://github-readme-stats.vercel.app/api?username=arav-behl&show_icons=true&include_all_commits=true&theme=tokyonight&hide_border=true&bg_color=1a1b27&rank_icon=github" alt="Activity overview — live commits, pull requests, issues and stars" />
 </p>
 
 ## Contribution Activity
