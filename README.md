@@ -13,12 +13,13 @@
 
 ## About Me
 
+- Founding Member of Technical Staff @ Stealth Startup
 - Gen-AI and NLP Researcher at NTU
-- Data Science Intern at EY
+- Global Macro & Quant Intern @ Point72 London
+- Data Science Intern at EY Singapore
 - Data Science and Economics at NTU
 - Building projects in ML, Data Science and AI agents
-- Deeply interested in Startups, VC and Asset Management — connect on LinkedIn for the finance side
-- Getting more involved in Open Source
+- Contributing to Open Source
 
 ## Languages and Tools
 
