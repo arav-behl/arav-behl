@@ -1,72 +1,39 @@
-![MasterHead](https://user-images.githubusercontent.com/10498744/210012254-234538ff-d198-48aa-8964-37e6fd45d227.gif)
-
-<h1 align="center">Hey, I'm Arav :)</h1>
-<h3 align="center">Data Science · ML · Full-Stack Development</h3>
-
 <p align="center">
-  <a href="https://twitter.com/AravBehl" target="_blank"><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter" /></a>
-  <a href="https://www.linkedin.com/in/arav-behl-0524a6230/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
-  <img src="https://komarev.com/ghpvc/?username=arav-behl&label=Profile%20views&color=6366f1&style=for-the-badge" alt="Profile views" />
-</p>
-
-<img align="right" alt="Coding" width="380" src="https://image.myanimelist.net/ui/_3fYL8i6Q-n-155t3dn_4hksVs3MIJxHadG7A7FI_oTy9pL-UqrC-cycJtDkuZzC" />
-
-## About Me
-
-- Founding Member of Technical Staff @ Stealth Startup
-- Gen-AI and NLP Researcher at NTU
-- Global Macro & Quant Intern @ Point72 London
-- Data Science Intern at EY Singapore
-- Data Science and Economics at NTU
-- Building projects in ML, Data Science and AI agents
-- Contributing to Open Source
-
-## Languages and Tools
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=ffffff)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![Rust](https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white)
-![Swift](https://img.shields.io/badge/Swift-FA7343?style=flat-square&logo=swift&logoColor=white)
-![C++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=ffffff)
-<br/>
-![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
-![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
-![MySQL](https://img.shields.io/badge/MySQL-07405e?style=flat-square&logo=mysql&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
-
-<br clear="right"/>
-
-## GitHub Stats
-
-<p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=arav-behl&theme=tokyonight" alt="Profile details" />
+  <img src="assets/header.svg" alt="Arav Behl — Applied ML Engineer · Agent Evals & Post-Training" width="100%" />
 </p>
 
 <p align="center">
-  <img height="195em" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=arav-behl&theme=tokyonight" alt="Repos per language" />
-  <img height="195em" src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=arav-behl&theme=tokyonight" alt="Most commit language" />
+  <a href="https://aravbehl.com"><img src="https://img.shields.io/badge/aravbehl.com-111827?style=flat-square&logo=googlechrome&logoColor=white" alt="Website" /></a>
+  <a href="https://www.linkedin.com/in/arav-behl-0524a6230/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+  <a href="https://twitter.com/AravBehl"><img src="https://img.shields.io/badge/@AravBehl-000000?style=flat-square&logo=x&logoColor=white" alt="X" /></a>
+  <a href="mailto:arav002@e.ntu.edu.sg"><img src="https://img.shields.io/badge/Email-6366f1?style=flat-square&logo=maildotru&logoColor=white" alt="Email" /></a>
 </p>
+
+I make LLM agents measurably better. I turn real failures into eval sets, build graders and regression gates a team can trust, and ship the post-training, prompt, or model changes that move the number.
+
+- **Now:** I lead evals and post-training (SFT, GRPO) for long-horizon tool-use agents at a stealth AI startup.
+- **Before:** Global Macro at **Point72** (London) · production agent evals at **UnifyApps** · AI research at **NTU / NIE**.
+- **Background:** B.Sc. Data Science & Economics (Distinction), NTU, as a President Research Scholar.
+
+### How I work
 
 <p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=arav-behl&hide_border=true&theme=tokyonight" alt="GitHub Streak" />
+  <img src="assets/eval-loop.svg" alt="Observe real failures → build evals and graders → gate regressions → ship improvements → repeat" width="100%" />
 </p>
 
-## Activity Overview
+### Selected work
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=arav-behl&show_icons=true&theme=tokyonight&hide_border=true&bg_color=1a1b27&rank_icon=github" alt="Activity overview — live commits, pull requests, issues and stars" />
-</p>
+| Project | What it shows |
+| --- | --- |
+| [**PaperShield**](https://github.com/arav-behl/ai_safety) | Prompt-injection eval: attack success went from **0% → 19.4%**. A defense cut harmful outputs but blocked **72%** of safe queries, so the safety/usability trade-off is quantified. |
+| [**ML for Indian equity portfolios**](https://github.com/arav-behl/Quant_Research_Strategies) | 16 strategies (Ridge, LSTM, PPO, LLM-based vs. Black-Litterman) across 50 Nifty stocks and 289 features, including FinBERT sentiment. |
+| [**Crypto order book engine**](https://github.com/arav-behl/rust_new) | Limit order book in Rust with price-time matching and live Binance WebSocket data. |
+| [**C++ real-time market data**](https://github.com/arav-behl/cpp_project) | Low-latency market data handler in C++20. |
+| [**Transcript clustering**](https://github.com/arav-behl/clustering_project) | Hierarchical NLP clustering of multi-customer discovery meetings. |
+| [**Pulsefield**](https://github.com/arav-behl/pulsefield) | Local-first Apple Health analytics. Every metric traces back to its source data, units, and versioned algorithm. |
 
-<p align="center">
-  <img src="assets/activity-radar.svg" alt="Activity radar — contribution split across commits, pull requests, code review and issues" />
-</p>
+### Toolkit
 
-## Contribution Activity
-
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=arav-behl&bg_color=1a1b27&color=70a5fd&line=bf91f3&point=38bdae&area=true&hide_border=true" alt="Contribution Graph" />
-</p>
+**Evals:** LLM-as-judge · held-out & regression gates · failure taxonomies · paired A/B · cost tracking<br>
+**Training:** SFT · GRPO · LoRA · distillation · PyTorch · Transformers · vLLM · W&B<br>
+**Engineering:** Python · TypeScript · SQL · Rust · C++ · GCP · AWS · Docker · Postgres · Next.js
