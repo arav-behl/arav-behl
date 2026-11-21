@@ -3,7 +3,7 @@
      free of blank lines and keep each row of repo cards on one line with no spaces between them. -->
 <div align="center">
 <a href="https://aravbehl.com"><img src="./cards/hero.svg" width="100%" alt="Arav Behl. Co-founded two startups, now building at a third. Ex-Point72 Global Macro." /></a><br>
-<img src="./cards/board.svg" width="100%" alt="Every day since May as a snakes and ladders board; a mouse walks from the first day to today" /><br>
+<img src="./cards/board.svg" width="100%" alt="Every day since May, one tile per day; a mouse walks from the first day to today" /><br>
 <img src="./cards/activity.svg" width="100%" alt="Contributions since May, by month, with streak and busiest day" /><br>
 <img src="./cards/title-built.svg" width="100%" alt="What I've built" /><br>
 <a href="https://github.com/arav-behl/ai_safety"><img src="./cards/repo-ai-safety.svg" width="33.333%" alt="PaperShield" /></a><a href="https://github.com/arav-behl/Quant_Research_Strategies"><img src="./cards/repo-quant-research-strategies.svg" width="33.333%" alt="Quant Research Strategies" /></a><a href="https://github.com/arav-behl/rust_new"><img src="./cards/repo-rust-new.svg" width="33.333%" alt="Crypto Order Book" /></a><br>

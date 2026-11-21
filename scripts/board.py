@@ -1,8 +1,7 @@
-"""Snakes-and-ladders board: one tile per day, a mouse walks from the first day to today.
+"""Calendar board: one tile per day, a mouse walks from the first day to today.
 
-Ladders climb from my busiest days, snakes slide down from quiet ones. Layout is
-boustrophedon like a real board: row 0 runs left to right along the bottom, row 1
-runs right to left above it, and so on.
+The mouse pauses on the busiest days. Layout is boustrophedon like a board game: row 0
+runs left to right along the bottom, row 1 runs right to left above it, and so on.
 """
 
 from __future__ import annotations
@@ -10,8 +9,7 @@ from __future__ import annotations
 import math
 from datetime import date
 
-from svg_kit import (ACCENT, ACCENT_DEEP, FAINT, GAP, HEAT, INK, LINE, MUTED, WIDTH, kicker,
-                     panel, svg_doc, text)
+from svg_kit import ACCENT, FAINT, GAP, HEAT, INK, LINE, MUTED, WIDTH, kicker, panel, svg_doc, text
 
 COLS = 28
 PAD_X = 40
@@ -19,9 +17,9 @@ PITCH = (WIDTH - 2 * PAD_X) / COLS
 TILE = PITCH - 4
 HEADER_H = 138
 FOOTER_H = 58
-MAX_LADDERS = 4
-MAX_SNAKES = 3
-WALK_SECONDS = 16
+WALK_SECONDS = 18
+BUSY_LEVEL = 4  # heat level at which the mouse stops for a moment
+PAUSE_STEPS = 3  # a pause lasts as long as walking this many tiles
 HOLD_FRACTION = 0.86  # share of the loop spent walking; the rest the mouse rests on today
 
 
@@ -31,88 +29,6 @@ def _cell_xy(index: int, board_top: float, rows: int) -> tuple[float, float]:
     x = PAD_X + visual_col * PITCH + PITCH / 2
     y = board_top + (rows - 1 - row) * PITCH + PITCH / 2
     return x, y
-
-
-def _index_at(row: int, visual_col: int) -> int:
-    col = visual_col if row % 2 == 0 else COLS - 1 - visual_col
-    return row * COLS + col
-
-
-def _visual_col(index: int) -> int:
-    row, col = divmod(index, COLS)
-    return col if row % 2 == 0 else COLS - 1 - col
-
-
-def _collides(start: int, end: int, placed: list[tuple[int, int]]) -> bool:
-    """True if a new jump would sit within 3 columns of an existing one over shared rows."""
-    rows = {start // COLS, end // COLS}
-    cols = {_visual_col(start), _visual_col(end)}
-    for a, b in placed:
-        other_rows = range(min(a, b) // COLS, max(a, b) // COLS + 1)
-        near = any(abs(c - _visual_col(x)) <= 3 for c in cols for x in (a, b))
-        if near and any(r in other_rows for r in range(min(rows), max(rows) + 1)):
-            return True
-    return False
-
-
-def _pick_jumps(days: list[dict], ranked: list[int], direction: int, limit: int,
-                taken: set[int], placed: list[tuple[int, int]]) -> list[tuple[int, int]]:
-    """Pick start->end jumps of 1-2 rows (up for ladders, down for snakes) that don't collide."""
-    jumps: list[tuple[int, int]] = []
-    for start in ranked:
-        row = start // COLS
-        if start in taken:
-            continue
-        for span in (2, 1):
-            target_row = row + direction * span
-            shift = 1 if _visual_col(start) < COLS - 2 else -1
-            end = _index_at(target_row, _visual_col(start) + shift) if target_row >= 0 else -1
-            if 0 <= end < len(days) and end not in taken and not _collides(start, end, placed):
-                jumps.append((start, end))
-                placed.append((start, end))
-                taken.update({start, end})
-                break
-        if len(jumps) == limit:
-            break
-    return jumps
-
-
-def _ladder(x1: float, y1: float, x2: float, y2: float) -> str:
-    dx, dy = x2 - x1, y2 - y1
-    length = math.hypot(dx, dy)
-    nx, ny = -dy / length * 5.5, dx / length * 5.5
-    rails = "".join(
-        f'<line x1="{x1 + s * nx:.1f}" y1="{y1 + s * ny:.1f}" x2="{x2 + s * nx:.1f}" '
-        f'y2="{y2 + s * ny:.1f}"/>' for s in (-1, 1)
-    )
-    rungs = []
-    steps = int(length // 9)
-    for k in range(1, steps):
-        t = k / steps
-        cx, cy = x1 + dx * t, y1 + dy * t
-        rungs.append(f'<line x1="{cx - nx:.1f}" y1="{cy - ny:.1f}" x2="{cx + nx:.1f}" y2="{cy + ny:.1f}"/>')
-    return (f'<g stroke="{INK}" stroke-width="2" stroke-linecap="round" opacity=".72">'
-            f'{rails}{"".join(rungs)}</g>')
-
-
-def _snake(x1: float, y1: float, x2: float, y2: float) -> str:
-    """Head at (x1, y1) on the quiet day, tail at (x2, y2) lower down."""
-    dx, dy = x2 - x1, y2 - y1
-    length = math.hypot(dx, dy)
-    nx, ny = -dy / length * 14, dx / length * 14
-    c1 = (x1 + dx * 0.33 + nx, y1 + dy * 0.33 + ny)
-    c2 = (x1 + dx * 0.66 - nx, y1 + dy * 0.66 - ny)
-    d = f"M{x1:.1f},{y1:.1f} C{c1[0]:.1f},{c1[1]:.1f} {c2[0]:.1f},{c2[1]:.1f} {x2:.1f},{y2:.1f}"
-    angle = math.degrees(math.atan2(-dy, -dx))
-    return (
-        f'<path d="{d}" fill="none" stroke="{ACCENT_DEEP}" stroke-width="7" stroke-linecap="round"/>'
-        f'<path d="{d}" fill="none" stroke="#f0b9a6" stroke-width="2.4" stroke-linecap="round" '
-        f'stroke-dasharray="3 7"/>'
-        f'<g transform="translate({x1:.1f},{y1:.1f}) rotate({angle:.1f})">'
-        f'<ellipse cx="2" cy="0" rx="7" ry="5.5" fill="{ACCENT_DEEP}"/>'
-        f'<circle cx="5" cy="-2.2" r="1.2" fill="#fff"/><circle cx="5" cy="2.2" r="1.2" fill="#fff"/>'
-        f'<path d="M9,0 l4,-1.6 M9,0 l4,1.6" stroke="{ACCENT}" stroke-width="1"/></g>'
-    )
 
 
 MOUSE = (
@@ -148,20 +64,43 @@ def _tiles(days: list[dict], rows: int, board_top: float) -> str:
     return "".join(parts)
 
 
+def _schedule(days: list[dict]) -> tuple[str, str]:
+    """keyTimes / keyPoints for the walk: steady steps, a short stop on each busiest day,
+    then a rest on today for the remainder of the loop."""
+    last = len(days) - 1
+    stops = [i for i, d in enumerate(days) if d["level"] >= BUSY_LEVEL and 0 < i < last]
+    total_steps = last + PAUSE_STEPS * len(stops)
+    points, times, elapsed = [0.0], [0.0], 0
+    for i in range(1, last + 1):
+        elapsed += 1
+        points.append(i / last)
+        times.append(elapsed / total_steps * HOLD_FRACTION)
+        if i in stops:
+            elapsed += PAUSE_STEPS
+            points.append(i / last)
+            times.append(elapsed / total_steps * HOLD_FRACTION)
+    points.append(1.0)
+    times.append(1.0)
+    fmt = lambda values: ";".join(f"{v:.4f}" for v in values)  # noqa: E731
+    return fmt(times), fmt(points)
+
+
 def _walk(days: list[dict], rows: int, board_top: float) -> str:
     points = [_cell_xy(i, board_top, rows) for i in range(len(days))]
     path = "M" + " L".join(f"{x:.1f},{y:.1f}" for x, y in points)
     length = PITCH * (len(points) - 1)
+    key_times, key_points = _schedule(days)
     timing = (f'dur="{WALK_SECONDS}s" repeatCount="indefinite" calcMode="linear" '
-              f'keyTimes="0;{HOLD_FRACTION};1"')
+              f'keyTimes="{key_times}"')
+    offsets = ";".join(f"{length * (1 - float(k)):.1f}" for k in key_points.split(";"))
     end_x, end_y = points[-1]
     return (
         f'<path d="{path}" fill="none" stroke="{INK}" stroke-opacity=".28" stroke-width="2" '
         f'stroke-linejoin="round" stroke-dasharray="{length:.1f}" stroke-dashoffset="{length:.1f}">'
-        f'<animate attributeName="stroke-dashoffset" values="{length:.1f};0;0" {timing}/></path>'
+        f'<animate attributeName="stroke-dashoffset" values="{offsets}" {timing}/></path>'
         f'<circle class="pulse" cx="{end_x:.1f}" cy="{end_y:.1f}" r="{TILE / 2 + 3:.1f}" fill="none" '
         f'stroke="{ACCENT}" stroke-width="2"/>'
-        f'<g><animateMotion path="{path}" rotate="auto" keyPoints="0;1;1" {timing}/>{MOUSE}</g>'
+        f'<g><animateMotion path="{path}" rotate="auto" keyPoints="{key_points}" {timing}/>{MOUSE}</g>'
     )
 
 
@@ -172,22 +111,11 @@ def render_board(days: list[dict], start: date) -> str:
     height = HEADER_H + rows * PITCH + FOOTER_H
     total = sum(d["count"] for d in days)
 
-    taken: set[int] = {0, len(days) - 1}
-    busiest = sorted(range(len(days)), key=lambda i: -days[i]["count"])
-    quiet = [i for i in range(len(days)) if days[i]["count"] == 0][::-1]
-    placed: list[tuple[int, int]] = []
-    ladders = _pick_jumps(days, busiest, +1, MAX_LADDERS, taken, placed)
-    snakes = _pick_jumps(days, quiet, -1, MAX_SNAKES, taken, placed)
-
-    xy = lambda i: _cell_xy(i, board_top, rows)  # noqa: E731
-    jumps = "".join(_ladder(*xy(a), *xy(b)) for a, b in ladders)
-    jumps += "".join(_snake(*xy(a), *xy(b)) for a, b in snakes)
-
     title = (f'<text x="{PAD_X}" y="82" class="serif rise" font-size="40" fill="{INK}" '
              f'style="animation-delay:.1s">Every day since {start:%B}, '
-             f'<tspan class="italic" fill="{ACCENT}">as a board game</tspan></text>')
-    sub = text(PAD_X, 108, f"{total:,} contributions across {len(days)} days. Ladders climb from my "
-               "busiest days; snakes slide from the quiet ones.", "sans rise", 13.5, MUTED, delay=0.2)
+             f'<tspan class="italic" fill="{ACCENT}">one tile at a time</tspan></text>')
+    sub = text(PAD_X, 108, f"{total:,} contributions across {len(days)} days. Darker tiles are busier "
+               "days; the mouse stops on the busiest.", "sans rise", 13.5, MUTED, delay=0.2)
     foot_y = height - GAP - 22
     legend = (
         text(PAD_X, foot_y, f"START · {start:%d %b %Y}".upper(), "mono", 10.5, FAINT)
@@ -198,10 +126,9 @@ def render_board(days: list[dict], start: date) -> str:
         + kicker(PAD_X, 42, "Refreshed daily")
         + title + sub
         + f'<g>{_tiles(days, rows, board_top)}</g>'
-        + f'<g class="fade" style="animation-delay:1.1s">{jumps}</g>'
         + _walk(days, rows, board_top)
         + legend
     )
-    label = (f"Snakes and ladders board of {len(days)} days of GitHub contributions since "
-             f"{start:%B %Y}; a mouse walks from the first day to today.")
+    label = (f"Calendar board of {len(days)} days of GitHub contributions since {start:%B %Y}; "
+             "a mouse walks from the first day to today, stopping on the busiest days.")
     return svg_doc(round(height), label, body, ("serif", "serif-italic", "sans", "mono"))
