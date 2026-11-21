@@ -2,7 +2,7 @@
      .github/workflows/update-cards.yml. Spacing is baked into the SVGs, so keep this block
      free of blank lines and keep each row of repo cards on one line with no spaces between them. -->
 <div align="center">
-<a href="https://aravbehl.com"><img src="./cards/hero.svg" width="100%" alt="Arav Behl. Co-founded two startups, now building at a third. Ex-Point72 Global Macro." /></a><br>
+<a href="https://aravbehl.com"><img src="./cards/hero.svg" width="100%" alt="Arav Behl. Co-founded two startups, now building at a third. Previously quant work at Point72 Global Macro." /></a><br>
 <img src="./cards/board.svg" width="100%" alt="Every day since May, one tile per day; a mouse walks from the first day to today" /><br>
 <img src="./cards/activity.svg" width="100%" alt="Contributions since May, by month, with streak and busiest day" /><br>
 <img src="./cards/title-built.svg" width="100%" alt="What I've built" /><br>

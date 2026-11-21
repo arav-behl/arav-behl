@@ -13,7 +13,7 @@ from svg_kit import (ACCENT, FAINT, GAP, HEAT, INK, LINE, MUTED, PAPER, RADIUS, 
 PAD = 40
 ALL_FONTS = ("serif", "serif-italic", "sans", "mono")
 
-HERO_STATS = (("2", "startups co-founded"), ("1", "building right now"), ("Point72", "global macro, London"))
+HERO_STATS = (("2", "startups co-founded"), ("1", "building right now"), ("Point72", "quant work, global macro"))
 
 REPOS = (
     ("PaperShield", "ai_safety", "Python",
@@ -41,8 +41,8 @@ def render_hero() -> str:
     name = (f'<text x="{PAD}" y="168" class="serif rise" font-size="112" fill="{INK}" '
             f'style="animation-delay:.1s">Arav <tspan class="italic" fill="{ACCENT}">Behl</tspan></text>')
     lines = ("Co-founded two startups, now building at a third.",
-             "Ex-Point72 Global Macro. I build AI agents and",
-             "measure whether they actually work.")
+             "Previously quant work at Point72 Global Macro.",
+             "I build AI agents and measure whether they work.")
     tagline = "".join(text(PAD, 220 + i * 25, escape(line), "sans rise", 17, INK, delay=0.25 + i * 0.05)
                       for i, line in enumerate(lines))
     link = (f'<a href="https://aravbehl.com" target="_blank">'
@@ -60,8 +60,8 @@ def render_hero() -> str:
         stats.append(text(col_x, y + 76, escape(label), "sans rise", 13.5, MUTED, delay=delay + 0.05))
     body = (panel(WIDTH, height - GAP) + kicker(PAD, 46, "Building at a stealth AI startup · Singapore")
             + name + tagline + link + "".join(stats))
-    label = ("Arav Behl. Co-founded two startups, now building at a third. Ex-Point72 Global Macro. "
-             "Builds AI agents and measures whether they work.")
+    label = ("Arav Behl. Co-founded two startups, now building at a third. Previously quant work at "
+             "Point72 Global Macro. Builds AI agents and measures whether they work.")
     return svg_doc(height, label, body, ALL_FONTS)
 
 
