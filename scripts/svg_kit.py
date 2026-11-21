@@ -3,9 +3,15 @@
 from __future__ import annotations
 
 import base64
+import html
+import io
+import re
 from functools import lru_cache
 from pathlib import Path
 from xml.sax.saxutils import escape
+
+from fontTools import subset
+from fontTools.ttLib import TTFont
 
 ROOT = Path(__file__).resolve().parent.parent
 FONT_DIR = ROOT / "fonts"
@@ -48,18 +54,39 @@ ANIMATIONS = """
 """
 
 
+TAG_RE = re.compile(r"<[^>]+>")
+
+
+def _glyphs_used(body: str) -> str:
+    """Every character drawn by the card, so embedded fonts carry only those glyphs."""
+    return "".join(sorted(set(html.unescape(TAG_RE.sub("", body))) | {" "}))
+
+
 @lru_cache(maxsize=None)
-def _font_face(key: str) -> str:
+def _subset_font(filename: str, chars: str) -> bytes:
+    font = TTFont(FONT_DIR / filename)
+    options = subset.Options()
+    options.flavor = "woff2"
+    options.layout_features = ["kern", "liga"]
+    subsetter = subset.Subsetter(options)
+    subsetter.populate(text=chars)
+    subsetter.subset(font)
+    out = io.BytesIO()
+    font.save(out)
+    return out.getvalue()
+
+
+def _font_face(key: str, chars: str) -> str:
     family, style, filename = FONTS[key]
-    data = base64.b64encode((FONT_DIR / filename).read_bytes()).decode("ascii")
+    data = base64.b64encode(_subset_font(filename, chars)).decode("ascii")
     return (
         f"@font-face{{font-family:'{family}';font-style:{style};"
         f"src:url(data:font/woff2;base64,{data}) format('woff2')}}"
     )
 
 
-def style_block(fonts: tuple[str, ...], extra: str = "") -> str:
-    faces = "".join(_font_face(k) for k in fonts)
+def style_block(fonts: tuple[str, ...], chars: str, extra: str = "") -> str:
+    faces = "".join(_font_face(k, chars) for k in fonts)
     return f"<style>{faces}{ANIMATIONS}{extra}</style>"
 
 
@@ -69,7 +96,7 @@ def svg_doc(height: int, label: str, body: str, fonts: tuple[str, ...], extra_cs
     return (
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" '
         f'viewBox="0 0 {width} {height}" role="img" aria-label="{safe}">'
-        f"<title>{safe}</title>{style_block(fonts, extra_css)}{body}</svg>"
+        f"<title>{safe}</title>{style_block(fonts, _glyphs_used(body), extra_css)}{body}</svg>"
     )
 
 

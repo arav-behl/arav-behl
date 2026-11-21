@@ -23,6 +23,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install font subsetter
+        run: pip install "fonttools[woff]==4.55.3"
+
       - name: Fetch contribution calendar
         run: python scripts/contrib.py
 
